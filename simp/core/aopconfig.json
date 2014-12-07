@@ -1,0 +1,55 @@
+{
+	"UserManager": 
+	{
+		"all": 
+		{
+			"before": 
+			[
+				{
+					"class": "SecurityManager",
+					"method": "checkLogin",
+					"parameters": 
+					[
+						
+					]
+				}
+			],
+
+			"after": 
+			[
+				{
+					"class": "Logger",
+					"method": "log",
+					"parameters": 
+					[
+						
+					]					
+				}
+			],
+
+			"after": 
+			[
+				{
+					"class": "Logger",
+					"method": "log",
+					"parameters": 
+					[
+						
+					]					
+				}
+			],
+
+			"after": 
+			[
+				{
+					"class": "Logger",
+					"method": "log",
+					"parameters": 
+					[
+						
+					]					
+				}
+			]
+		}
+	}
+}
