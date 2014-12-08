@@ -1,5 +1,5 @@
 <?php
-require_once '../framework/Autoload.php';
+require_once '../core/Autoload.php';
 @session_start();
 
 class UserManager extends Manager
@@ -7,21 +7,18 @@ class UserManager extends Manager
 	public function login($params){		
 		$userParam=$params;
 		unset($userParam['command']);
-		$userInfo=UserInfo::readArray($userParam);
-		if(count($userInfo)<=0){
+		
+		$userInfo=UserInfo::retrieve($userParam);
+		
+		if($userInfo==null){
 			throw new Exception("Invalid user information.","-100");
 		}else{
-			$_SESSION['username']=$userInfo[0]['username'];
-			$_SESSION['userid']=$userInfo[0]['userid'];
-			$_SESSION['isAdmin']=$userInfo[0]['isAdmin'];
-			$_SESSION['level']=$userInfo[0]['level'];
-
+			$_SESSION['userid']=$userInfo->get('userid');
+			$_SESSION['username']=$userInfo->get('username');
 
 			$result=array();
-			$result['username']=$userInfo[0]['username'];
-			$result['userid']=$userInfo[0]['userid'];
-			$result['isAdmin']=$userInfo[0]['isAdmin'];
-			$result['level']=$userInfo[0]['level'];
+			$result['userid']=$userInfo->get('userid');
+			$result['username']=$userInfo->get('username');
 
 			return $result;
 		}
@@ -29,7 +26,7 @@ class UserManager extends Manager
 
 
 	public function delete($params){
-		if($params['no']==null){
+		if($params['userid']==null){
 			throw new Exception('Parameter error','-101');
 		}
 		UserInfo::delete($params);
@@ -45,8 +42,7 @@ class UserManager extends Manager
 
 		$userInfo=new UserInfo();
 		foreach($insertParam as $k=>$v){
-			if(method_exists($userInfo,"set".ucfirst($k)))
-				$userInfo->{"set".ucfirst($k)}(addslashes($v));
+			$userInfo->set($k,$v);
 		}
 
 
@@ -54,7 +50,7 @@ class UserManager extends Manager
 	}
 
 	public function update($params){
-		if($params['no']==null){
+		if($params['userid']==null){
 			throw new Exception('Parameter error','-101');
 		}
 
@@ -65,12 +61,10 @@ class UserManager extends Manager
 			$updateParam['regdate']=date("Y-m-d H:i:s");
 		}
 
-		$userInfo=new UserInfo();
-		$userInfo->readObject(array("no"=>$params['no']));
+		$userInfo=UserInfo::retrieve($params);
 
 		foreach($updateParam as $k=>$v){
-			if(method_exists($userInfo,"set".ucfirst($k)))
-				$userInfo->{"set".ucfirst($k)}(addslashes($v));
+			$userInfo->set($k,$v);
 		}
 
 

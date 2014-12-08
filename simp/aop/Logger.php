@@ -2,15 +2,10 @@
 
 class Logger
 {
-	private $log_file = 'logfile.log';
+	private $log_file = '../log/logfile.log';
 	private $nl = "\n";
 	private $fp = null;
 
-	/**
-	 * Logs a message.
-	 *
-	 * @param  $sMessage @type string The message.
-	 */
 	public function log($sMessage)
 	{
 		try{
@@ -30,9 +25,11 @@ class Logger
 		$script_name = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
 		$time = date('H:i:s');
 		fwrite($this->fp, "$time ($script_name) $message". $this->nl);
+		
+		$this->close();
 	}
 
-	public function close() {
+	private function close() {
 		fclose($this->fp);
 	}
 

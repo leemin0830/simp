@@ -6,12 +6,8 @@
 			"before": 
 			[
 				{
-					"class": "SecurityManager",
-					"method": "checkLogin",
-					"parameters": 
-					[
-						
-					]
+					"class": "Logger",
+					"method": "log"
 				}
 			],
 
@@ -19,35 +15,24 @@
 			[
 				{
 					"class": "Logger",
-					"method": "log",
-					"parameters": 
-					[
-						
-					]					
+					"method": "log"				
 				}
 			],
 
-			"after": 
+			"beforeError": 
 			[
 				{
-					"class": "Logger",
-					"method": "log",
-					"parameters": 
-					[
-						
-					]					
+					"class": "ErrorHandler",
+					"method": "handleError"
+										
 				}
 			],
 
-			"after": 
+			"afterError": 
 			[
 				{
-					"class": "Logger",
-					"method": "log",
-					"parameters": 
-					[
-						
-					]					
+					"class": "ErrorHandler",
+					"method": "handleError"					
 				}
 			]
 		}

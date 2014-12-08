@@ -1,16 +1,15 @@
 <?
 $depth=substr_count($_SERVER['SCRIPT_NAME'],"/");
 
+define("APPLICATION_PATH","../");
+
 if($depth==4){
-	define(APPLICATION_PATH,"../../");
+	define("APPLICATION_PATH","../../");
 }else if($depth==5){	
-	define(APPLICATION_PATH,"../../../");
-}else{
-	define(APPLICATION_PATH,"../");
+	define("APPLICATION_PATH","../../../");
 }
 
-require_once APPLICATION_PATH.'/model/_config.inc.php';
-require_once APPLICATION_PATH.'/framework/Constant.php';
+require_once APPLICATION_PATH.'core/Constant.php';
 
 
 function __autoload($className) 
@@ -18,13 +17,11 @@ function __autoload($className)
     if ('parent' != $className) 
     { 
 	$possibilities = array(
-			'../'.'core'.DIRECTORY_SEPARATOR.$className.'.php',
-			'../'.'manager'.DIRECTORY_SEPARATOR.$className.'.php',
-			'../'.'model'.DIRECTORY_SEPARATOR.$className.'.php',
-				
 			APPLICATION_PATH.'core'.DIRECTORY_SEPARATOR.$className.'.php',
 			APPLICATION_PATH.'manager'.DIRECTORY_SEPARATOR.$className.'.php',
 			APPLICATION_PATH.'model'.DIRECTORY_SEPARATOR.$className.'.php',
+			APPLICATION_PATH.'aop'.DIRECTORY_SEPARATOR.$className.'.php',
+				
 			$className.'.php'
 	);
 	foreach ($possibilities as $file) {

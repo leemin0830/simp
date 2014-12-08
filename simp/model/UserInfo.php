@@ -1,37 +1,41 @@
 <?php
+@session_start();
+
 // Sample Model
 class UserInfo {
-	public function get($array = array()) {
-		$array ['id'] = 'simp';
-		$array ['email'] = '';
-		return $array;
-	}
-	public static function all($array = array()) {
-		$array [0]=array();
-		$array [0] ['id'] = 'simp';
-		$array [0] ['email'] = '';
-		
-		$array [1]=array();
-		$array [1] ['id'] = 'simp2';
-		$array [1] ['email'] = '';
-		
-		return $array;
+	private $data=array();
+	
+	public function UserInfo($userid='',$username='',$passwd=''){
+		$this->data['userid']=$userid;
+		$this->data['username']=$username;
+		$this->data['$passwd']=$passwd;
 	}
 	
-	public function add($array = array()) {
-		$array ['id'] = 'simp';
-		$array ['email'] = '';
-		return $array;
+	public function get($key){
+		return $this->data[$key];
 	}
-	public static function delete($array = array()) {
-		$array ['id'] = 'simp';
-		$array ['email'] = '';
-		return $array;
+	
+	public function set($key,$value){
+		$this->data[$key]=$value;
 	}
-	public static function update($array = array()) {
-		$array ['id'] = 'simp';
-		$array ['email'] = '';
-		return $array;
+	
+	//sync with database
+	public function update(){
+		
+	}
+	
+	//add to database
+	public function add(){
+		
+	}
+	
+	//retrieve from database
+	public static function retrieve($param){
+		//example
+		if($param['userid']=='test'){
+			return new UserInfo('test','jason','1234');
+		}
+		return null;
 	}
 }
 ?>

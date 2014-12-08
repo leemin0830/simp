@@ -13,7 +13,7 @@ class SecurityManager{
 	
 	public function checkLogin($params){
 		
-		if($_SESSION['username']==null){
+		if($_SESSION['userid']==null){
 			throw new Exception("You should log in","-202");
 		}
 	}
