@@ -9,7 +9,7 @@ You can easily use this framework for your simple ajax & mobile back-end service
 0.1.0
 
 ## How it works
-![simp architecture](http://leeminlab.com/simp.png)
+![simp architecture](https://cloud.githubusercontent.com/assets/5653885/5340518/cf70d86a-7f30-11e4-984c-8d19c5df253d.png)
 
 ## Example
 See example files below sequentially,
