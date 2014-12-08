@@ -17,7 +17,7 @@ See example files below sequentially,
 |file|description|
 |-----|-----|
 | /html/user.html | test view|
-| /manager/UserManager.php | for API service expose| 
+| /manager/UserManager.php | for API service exposure| 
 | /core/aopconfig.json | for aop configuration|
 | /model/UserInfo.php | for sample data model|
 
