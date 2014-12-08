@@ -92,7 +92,7 @@ AOP configuration: You can setup AOP Execution by specifying target class and me
 
  - Implement ClassLoader & Cache
  - Add Scope Feature (Server Instance, Session, Reqeust)
- - Add 'Schema(Table) to Model Auto-Generation' Feature
+ - Add 'Scheme(Table) to Model Auto-Generation' Feature
  - Add Front-End Javascript Auto-Generation Feature
  - Handling User Parameters In AOP Module
 
