@@ -9,7 +9,7 @@ You can easily use this framework for your simple ajax & mobile back-end service
 0.1.0
 
 ## How it works
-![simple architecture](http://leeminlab.com/simp.png "Architecture of simp")
+![simp architecture](http://leeminlab.com/simp.png)
 
 ## Example
 See example files below sequentially,
